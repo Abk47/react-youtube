@@ -9,7 +9,8 @@ class SearchBar extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault()
-    // Will add more logic here later
+    // We do a callback from the parent component
+    this.props.callback(this.state.searchTerm)
   }
 
   render () {
@@ -21,7 +22,6 @@ class SearchBar extends Component {
             <input 
             type='text' 
             name='search'
-            autoComplete='off' 
             placeholder='Search'
             value={this.state.searchTerm} 
             onChange={this.onInputChange}

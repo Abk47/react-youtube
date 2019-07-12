@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 const VideoDetail = ({ video }) => {
   if (!video) {
-    return <h3>No video Played!</h3>
+    return <p>Loading...</p>
   } else {
     const videoURL = `https://www.youtube.com/embed/${video.id.videoId}`
     return (

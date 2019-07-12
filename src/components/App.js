@@ -10,6 +10,10 @@ class App extends Component {
     selectedVideo: null
   }
 
+  componentDidMount(){
+    this.onSearchTermSubmit('Diamond Platnumz')
+  }
+
   onSearchTermSubmit = async (searchTerm) => {
     const response = await youtube.get('/search', {
       params: {
@@ -19,7 +23,10 @@ class App extends Component {
         key: API_KEY
       }
     })
-    this.setState({ videos: response.data.items }) 
+    this.setState({ 
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
+     }) 
   }
    
   onVideoSelect = (video) => {
@@ -30,7 +37,6 @@ class App extends Component {
     return (
       <div className='ui container' style={{ margin: '1rem' }}>
         <SearchBar callback={this.onSearchTermSubmit}/>
-        Search Results: {this.state.videos.length}
         <div className='ui grid'>
           <div className='ui row'>
             <div className='eleven wide column'>
